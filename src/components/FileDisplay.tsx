@@ -85,7 +85,7 @@ const FileDisplay = (props: Props) => {
   useEffect(() => {
     // setPPL(docsPostingList[docId]);
     // pagePostingList =
-    axios.get(`static/speech_/${docId}.txt`)
+    axios.get(`static/speech_${docId}.txt`)
       .then(response => {
         setDocs(response.data);
         const text = response.data.split('\n')[1];
