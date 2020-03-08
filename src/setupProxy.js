@@ -22,6 +22,6 @@ module.exports = function(app) {
   // else{
   //     app.use(proxy('/management', {target : 'http://localhost:8000'}));
   // }
-  app.use(proxy('/get_csrf', options));
+  app.use(proxy('/authentication/get_csrf', options));
   app.use(proxy('/iindex', options));
 };

@@ -129,7 +129,7 @@ export default function Home(props: Props) {
           setServerDown(true);
         });
 
-      axios.get('/get_csrf/')
+      axios.get('/authentication/get_csrf/')
         .then(response => {
           console.log(response.data.csrfToken);
           
