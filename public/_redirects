@@ -1,5 +1,6 @@
 
 /authentication/*  http://ira1.herokuapp.com/authentication/:splat 200
+/static/*  http://ira1.herokuapp.com/static/:splat 200
 
 /iindex/*  http://ira1.herokuapp.com/iindex/:splat  200
 
