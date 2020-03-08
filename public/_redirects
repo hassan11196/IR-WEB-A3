@@ -1,0 +1,7 @@
+
+/get_csrf  http://ira1.herokuapp.com/get_csrf 200
+
+/iindex/*  http://ira1.herokuapp.com/iindex/:splat  200
+
+
+/* /index.html 200

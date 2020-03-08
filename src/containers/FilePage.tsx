@@ -1,0 +1,22 @@
+import { bindActionCreators, Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import FileDisplay from '../components/FileDisplay';
+import { updateDocs, clearDocs } from '../actions/docPostingList';
+
+function mapStateToProps(state) {
+  return {
+    docs: state.docsPostingList
+  };
+}
+
+function mapDispatchToProps(dispatch: Dispatch) {
+  return bindActionCreators(
+    {
+      updateDocs,
+      clearDocs
+    },
+    dispatch
+  );
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FileDisplay);
