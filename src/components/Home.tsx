@@ -11,7 +11,9 @@ import {
   Input,
   Popup,
   Button,
-  Message
+  Message,
+  Loader,
+  Label
 } from 'semantic-ui-react';
 import SweetAlert from 'sweetalert-react';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -59,6 +61,11 @@ export default function Home(props: Props) {
     })
       .then(response => {
         console.log(response);
+        setAlert({
+          status: true,
+          title: 'Indexing Complete',
+          text: 'Documents Have Been Indexed'
+        });
         return response;
       })
       .catch((e)=>console.error(e));
@@ -149,12 +156,35 @@ export default function Home(props: Props) {
 
   return (
     <>
+    <Row style={{ marginTop: '20px' }}>
+        <Col md={{ size: 2, offset: 2 }}>
+          <Label>
+            {process.env.NODE_ENV === 'development'
+              ? ' Mode : DEV MODE'
+              : 'Mode: PROD MODE'}
+          </Label>
+        </Col>
+        <Col md={{ size: 3, offset: 5 }}>
+        <Popup
+            position="bottom center"
+            
+            trigger={(
+              <Button onClick={() => postStartIndexer()}>
+                Re-Index Documents
+              </Button>
+       
+              )}
+          >
+            <Popup.Content>This takes a few seconds.</Popup.Content>
+          </Popup>
+        </Col>
+      </Row>
       <div
         style={{
           alignContent: 'center',
           textAlign: 'center',
           verticalAlign: 'middle',
-          marginTop: '200px',
+          marginTop: '120px',
           marginBottom: '20px'
         }}
       >
