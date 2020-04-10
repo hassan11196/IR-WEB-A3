@@ -24,4 +24,5 @@ module.exports = function(app) {
   // }
   app.use(proxy('/authentication/get_csrf', options));
   app.use(proxy('/iindex', options));
+  app.use(proxy('/vsm', options));
 };

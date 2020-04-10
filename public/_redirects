@@ -1,8 +1,9 @@
 
-/authentication/*  http://ira1.herokuapp.com/authentication/:splat 200
-/static/*  http://ira1.herokuapp.com/static/:splat 200
+/authentication/*  http://ira2.herokuapp.com/authentication/:splat 200
+/static/*  http://ira2.herokuapp.com/static/:splat 200
 
-/iindex/*  http://ira1.herokuapp.com/iindex/:splat  200
+/iindex/*  http://ira2.herokuapp.com/iindex/:splat  200
+/vsm/*  http://ira2.herokuapp.com/vsm/:splat  200
 
 
 /* /index.html 200

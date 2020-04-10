@@ -20,7 +20,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
 // import axios from '../axios';
 import 'semantic-ui-css/semantic.min.css';
-import routes from '../constants/routes.json';
+import routes from '../../constants/routes.json';
 // import { updateDocs, clearDocs } from '../actions/docPostingList';
 // import docPostingList from '../reducers/docPostingList';
 

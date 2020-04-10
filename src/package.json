@@ -1,14 +1,14 @@
 {
-  "name": "electron-react-boilerplate",
+  "name": "ir-web-a2",
   "proxy": "http://localhost:8000",
-  "productName": "electron-react-boilerplate",
+  "productName": "IR-WEB-A2",
   "version": "1.0.0",
-  "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
+  "description": "A React-Redux based Front-end Web Application For Information Retrieval - Assignment 2 - CS317 - FAST NUCES (Karachi)",
   "main": "./main.prod.js",
   "author": {
-    "name": "Electron React Boilerplate Maintainers",
-    "email": "electronreactboilerplate@gmail.com",
-    "url": "https://github.com/electron-react-boilerplate"
+    "name": "M.Hassan Ahmed",
+    "email": "hassan11196@hotmail.com",
+    "url": "https://www.hassan11196.codes/"
   },
   "scripts": {
     "electron-rebuild": "node -r ../internals/scripts/BabelRegister.js ../internals/scripts/ElectronRebuild.js",
