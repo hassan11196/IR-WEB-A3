@@ -152,7 +152,7 @@ const FileDisplay = (props: Props) => {
         </div>
 
         <Segment.Group>
-          {props.docs === [] ||
+          {/* {props.docs === [] ||
           props.docs === undefined ||
           props.docs === null ? (
             [docs.split('\n')[0]].map((line, index) => {
@@ -177,34 +177,7 @@ const FileDisplay = (props: Props) => {
             })
           ) : (
             <h1>Invalid Document</h1>
-          )}
-
-          {!(
-            linesToShow === [] ||
-            linesToShow === undefined ||
-            linesToShow === null
-          ) ? (
-            linesToShow.map((line, index) => {
-              return (
-                <Segment key={line[5] + index}>
-                  <div style={{ display: 'inline' }}>
-                    <p
-                      key={line[0] + index}
-                      style={{
-                        backgroundColor: 'yellow',
-
-                        color: 'black'
-                      }}
-                    >
-                      {line}
-                    </p>
-                  </div>
-                </Segment>
-              );
-            })
-          ) : (
-            <h1>Invalid Posting</h1>
-          )}
+          )} */}
           <Segment>
             <span>
               {!(
@@ -231,6 +204,33 @@ const FileDisplay = (props: Props) => {
               ) : null}
             </span>
           </Segment>
+          {!(
+            linesToShow === [] ||
+            linesToShow === undefined ||
+            linesToShow === null
+          ) ? (
+            linesToShow.map((line, index) => {
+              return (
+                <Segment key={line[5] + index}>
+                  <div style={{ display: 'inline' }}>
+                    <p
+                      key={line[0] + index}
+                      style={{
+                        backgroundColor: 'yellow',
+
+                        color: 'black'
+                      }}
+                    >
+                      {line}
+                    </p>
+                  </div>
+                </Segment>
+              );
+            })
+          ) : (
+            <h1>Invalid Posting</h1>
+          )}
+          
         </Segment.Group>
       </Container>
       <SweetAlert

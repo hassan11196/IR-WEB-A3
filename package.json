@@ -1,7 +1,7 @@
 {
   "name": "ir-web-a2",
   "version": "0.1.0",
-  "proxy":"http://localhost:8000",
+  "proxy": "http://localhost:8000",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
@@ -28,6 +28,7 @@
     "react-router-config": "^5.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
+    "react-select": "^3.1.0",
     "reactstrap": "^8.4.1",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
