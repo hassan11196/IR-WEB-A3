@@ -3,5 +3,7 @@
   "COUNTER": "/counter",
   "FILE": "/fileDisplay",
   "BOOLEAN":"/Boolean",
-  "VECTORSPACE":"/VectorSpace"
+  "VECTORSPACE":"/VectorSpace",
+  "KNN":"/KNN",
+  "KMean":"/KMean"
 }

@@ -1,9 +1,9 @@
 {
-  "name": "ir-web-a2",
+  "name": "ir-web-a3",
   "proxy": "http://localhost:8000",
-  "productName": "IR-WEB-A2",
+  "productName": "IR-WEB-A3",
   "version": "1.0.0",
-  "description": "A React-Redux based Front-end Web Application For Information Retrieval - Assignment 2 - CS317 - FAST NUCES (Karachi)",
+  "description": "A React-Redux based Front-end Web Application For Information Retrieval - Assignment 3 - CS317 - FAST NUCES (Karachi)",
   "main": "./main.prod.js",
   "author": {
     "name": "M.Hassan Ahmed",
