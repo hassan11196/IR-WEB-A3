@@ -14,8 +14,9 @@ export default function Routes() {
     <App>
       <Switch>
         <Route path={routes.COUNTER} component={CounterPage} />
-        <Route exact path={routes.HOME} component={KMeanHomePage} />
+        <Route exact path={routes.HOME} component={KNNHomePage} />
         <Route exact path={routes.KNN} component={KNNHomePage} />
+        <Route exact path={routes.KMean} component={KMeanHomePage} />
         <Route exact path={routes.VECTORSPACE} component={VectorHomePage} />
         <Route exact path={routes.BOOLEAN} component={BooleanHomePage} />
         <Route path={`${routes.FILE}/:docId`} component={FilePage} />

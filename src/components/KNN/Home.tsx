@@ -56,12 +56,13 @@ export default function Home(props: Props) {
   const [firstPage, setFirstPage] = useState(0);
   const [serverDown, setServerDown] = useState(false);
   const [resultyType, setResultType] = useState("set");
-  const [vsmFunctions, setVsmFunctions] = useState([]);
+  const [modelProperties, setmodelProperties] = useState([]);
   const [choiceFunctions, setChoiceFunctions] = useState([]);
   const [modalState, setModalState] = useState(false);
   const [newTrainSize, setnewTrainSize] = useState(0.8);
   const [newTestSize, setnewTestSize] = useState(0.2);
   const [distanceFormula, setnewDistance] = useState('');
+  const [labelDisplay, setLabel] = useState('');
 
   const getNewK = value => {
     setK(value);
@@ -108,8 +109,9 @@ export default function Home(props: Props) {
     formd.append("csrfmiddlewaretoken", cookie);
     formd.append("query", query);
     formd.append("k", K.toString());
+    formd.append("dataset", DATASET_NAME);
     const res = axios
-      .post("/vsm/query/", formd, {
+      .post(`/classification/predict/${MODEL_NAME}`, formd, {
         withCredentials: true
       })
       .then(response => {
@@ -122,22 +124,23 @@ export default function Home(props: Props) {
         //   return response;
         // }
         setResultType(response.data.type);
-        setFirstPage(response.data.docs[0][0]);
+        setLabel(response.data.result[0]);
+        // setFirstPage(response.data.docs[0][0]);
 
-        console.log(response.data.docs[0].map((doc: any[]) => doc[0]));
+        // console.log(response.data.docs[0].map((doc: any[]) => doc[0]));
         // @ts-ignore
-        setLocalPostingList({
-          docIds: response.data.docs.map((doc: any[]) => doc[0]),
-          PList: response.data.result
-        });
+        // setLocalPostingList({
+        //   docIds: response.data.docs.map((doc: any[]) => doc[0]),
+        //   PList: response.data.result
+        // });
 
-        // @ts-ignore
-        setDocs(response.data.docs);
-        // @ts-ignore
-        updateDocs({
-          docIds: Object.keys(response.data.result),
-          PList: response.data.result
-        });
+        // // @ts-ignore
+        // setDocs(response.data.docs);
+        // // @ts-ignore
+        // updateDocs({
+        //   docIds: Object.keys(response.data.result),
+        //   PList: response.data.result
+        // });
 
         return response;
       })
@@ -156,7 +159,7 @@ export default function Home(props: Props) {
       axios
         .get(`/classification/model/${MODEL_NAME}`)
         .then(response => {
-          setVsmFunctions(response.data.data);
+          setmodelProperties(response.data.data);
           // setDataFetched(true);
           return response;
         })
@@ -201,13 +204,13 @@ export default function Home(props: Props) {
           K173654
         </Menu.Item>
 
-        <Menu.Item
+        {/* <Menu.Item
           name='KMeans'
           active={false}
           onClick={()=> window.location.href = '/#/KMean'}
         >
           KMeans Clustering
-        </Menu.Item>
+        </Menu.Item> */}
 
         <Menu.Item
           name='KNN'
@@ -239,15 +242,17 @@ export default function Home(props: Props) {
               Current Configuration :
               </Header>
               <Modal.Description>
-                
-                  <h5  style={{color:'black'}}>
-                  Date Time Indexed : {vsmFunctions['id']}
+              <h5  style={{color:'black'}}>
+                  Accuracy :  {modelProperties['accuracy']}
                   </h5>
                   <h5  style={{color:'black'}}>
-                  Tf Function :  {vsmFunctions['tf_func']}
+                  Date Time Indexed : {modelProperties['id']}
                   </h5>
                   <h5  style={{color:'black'}}>
-                  Idf Function :  {vsmFunctions['idf_func']}
+                  Train Size :  {modelProperties['train_size']}
+                  </h5>
+                  <h5  style={{color:'black'}}>
+                  Test Size :  {modelProperties['test_size']}
                   </h5>
                 
               </Modal.Description>
@@ -307,7 +312,7 @@ export default function Home(props: Props) {
                       </Button>
                     }
                   >
-                    <Popup.Content>This takes a few seconds.</Popup.Content>
+                    <Popup.Content>This takes a few Minutes.</Popup.Content>
                   </Popup>
                 </>
               ) : null}
@@ -351,15 +356,28 @@ export default function Home(props: Props) {
             </div>
           </div>
         ) : null}
+       {
+          labelDisplay !== '' ?  <Row>
+          <Col md={{ size: 2, offset: 5 }}>
+            <Form.Button style={{ width: "100%" }} >
+             {labelDisplay}
+            </Form.Button>
+          </Col>
+        </Row>: null
+  
+
+   }
+<br/>
+
         <Row >
-          <Col sm="12" md={{ size: 6, offset: 3 }}>
+          <Col sm="12" md={{ size: 10, offset: 1 }}>
             <Popup
               position="bottom center"
               trigger={
                 <Input
-                fluid
+                
                   loading={loadingStatus}
-                  style={{ width: "100%", height:'100px' }}
+                  style={{ width: "100%", height:'120px'}}
                   placeholder="Enter Your Text Here"
                   onChange={event => setQuery(event.target.value)}
                 />
