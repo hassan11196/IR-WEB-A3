@@ -18,7 +18,8 @@ import {
   Modal,
   Icon,
   Menu,
-  TextArea 
+  TextArea ,
+  Checkbox
 } from "semantic-ui-react";
 import Select from 'react-select'
 import SweetAlert from "sweetalert-react";
@@ -63,6 +64,7 @@ export default function Home(props: Props) {
   const [newTestSize, setnewTestSize] = useState(0.2);
   const [distanceFormula, setnewDistance] = useState('');
   const [labelDisplay, setLabel] = useState('');
+  const [reIndex, setnewReIndex] = useState();
 
   const getNewK = value => {
     setK(value);
@@ -78,6 +80,7 @@ export default function Home(props: Props) {
     formd.append("test_size",String(newTestSize));
     formd.append("k", String(K));
     formd.append('distance_formula',distanceFormula)
+    formd.append('re_index', reIndex);
 
     const res = axios
       .post(`/classification/model/${MODEL_NAME}`, formd, {
@@ -264,7 +267,9 @@ export default function Home(props: Props) {
               {dataFetched ? (
                 <>
                   <Modal.Description>
-                    <Header>Select Train Percentage: Default is 0.8</Header>
+                    <div style={{display:'inline-flex', alignSelf:'center'}}>
+                    <Header style={{ alignSelf:'center'}}>Select Train Percentage: Default is 0.8</Header>
+                    <br/>
                     <Input
                       style={{color:'black'}}
                       placeholder="Select Train Percentage"
@@ -274,12 +279,12 @@ export default function Home(props: Props) {
                       // })}
                       
                       onChange={(event)=>console.log(setnewTrainSize(Number(event.target.value)))}
+                      
                     />
-                    
-                  </Modal.Description>
-                  <br></br>
-                  <Modal.Description>
-                    <Header>Select Test Percentage: Default is 0.2</Header>
+                    </div>
+                    <div style={{display:'inline-flex', alignSelf:'center'}}>
+                    <Header  style={{ alignSelf:'center'}}>Select Test Percentage: Default is 0.2</Header>
+                    <br/>
                     <Input
                       onChange={(event)=>console.log(setnewTestSize(Number(event.target.value)))}
                       placeholder="Select Test Percentage"
@@ -288,8 +293,10 @@ export default function Home(props: Props) {
                       //   return { key: cf[0], label: cf[0], value: cf[0], color:'black' };
                       // })}
                     />
+                    </div>
                     
                   </Modal.Description>
+                  
                   <br></br>
                   <Modal.Description>
                     <Header>Select Distance Formula</Header>
@@ -304,6 +311,20 @@ export default function Home(props: Props) {
                     
                   </Modal.Description>
                   <br></br>
+                  <Modal.Description>
+                    <Header>Re-Index Vector Space Model</Header>
+                    <Checkbox
+                      onChange={(event, {checked})=>console.log(setnewReIndex(checked))}
+                      
+                      
+                      // options={choiceFunctions["idf"].map(cf => {
+                      //   return { key: cf[0], label: cf[0], value: cf[0], color:'black' };
+                      // })}
+                    />
+                    
+                  </Modal.Description>
+                  <br></br>
+                  
                   <Popup
                     position="bottom center"
                     trigger={
