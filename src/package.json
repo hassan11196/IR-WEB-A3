@@ -8,7 +8,7 @@
   "author": {
     "name": "M.Hassan Ahmed",
     "email": "hassan11196@hotmail.com",
-    "url": "https://www.hassan11196.codes/"
+    "url": "https://www.hassanahmed.net/"
   },
   "scripts": {
     "electron-rebuild": "node -r ../internals/scripts/BabelRegister.js ../internals/scripts/ElectronRebuild.js",
